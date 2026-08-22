@@ -165,8 +165,8 @@ const servicesList = [
     image: serviceAssetImg,
     tag: "Asset Stewardship",
     title: "Property Consultant & Asset Management",
-    short: "Let us take care of your property while maximizing your returns.",
-    desc: "Comprehensive real estate asset stewardship covering high-caliber corporate tenant acquisition, lease structuring, operational optimization, and complete facility upkeep to ensure zero vacancy and peak capitalization.",
+    short: "Maximize property yield & tenant acquisition.",
+    desc: "Complete asset stewardship, corporate tenant leasing, and preventative facility management to ensure peak returns.",
     bullets: ["Corporate Tenant Acquisition", "Preventative Asset Stewardship", "Lease & Yield Optimization"],
   },
   {
@@ -175,9 +175,9 @@ const servicesList = [
     image: serviceInvestmentImg,
     tag: "Portfolio Strategy",
     title: "Real Estate Investment Strategies",
-    short: "Tailored data-driven investment strategies for long-term alpha.",
-    desc: "Bespoke micro-market intelligence across Pune's prime growth corridors. We guide individual and institutional investors in acquiring, developing, and monetizing high-yield commercial and luxury residential properties.",
-    bullets: ["Pune Micro-Market Intelligence", "Commercial vs Residential ROI Modeling", "Capital Growth & Exit Strategy"],
+    short: "Data-driven commercial & residential alpha.",
+    desc: "Bespoke micro-market intelligence across Pune's prime growth corridors for high-yield property monetization.",
+    bullets: ["Pune Micro-Market Intelligence", "Commercial vs Residential ROI", "Capital Growth & Exit Strategy"],
   },
   {
     icon: Layers,
@@ -185,8 +185,8 @@ const servicesList = [
     image: serviceWorkspacesImg,
     tag: "Turnkey Offices",
     title: "Boutique Managed Workspaces",
-    short: "Bespoke corporate ecosystems tailored for teams of 4 to 100+.",
-    desc: "Fully serviced, architecturally refined private offices in Pune's most coveted business hubs. Combining enterprise technology, 24/7 biometric security, artisan hospitality, and flexible enterprise terms.",
+    short: "Private suites tailored for teams of 4 to 100+.",
+    desc: "Fully serviced, architecturally refined private offices with redundant high-speed fiber and concierge privileges.",
     bullets: ["1 Gbps Redundant Dual Fiber", "Dedicated Acoustic Private Suites", "Concierge & Meeting Room Privileges"],
   },
   {
@@ -195,8 +195,8 @@ const servicesList = [
     image: serviceInteriorsImg,
     tag: "Private Sanctuaries",
     title: "Turnkey Luxury Architectural Interiors",
-    short: "Rarefied private residences and bespoke corporate headquarters.",
-    desc: "From initial spatial planning to custom bespoke millwork, Italian stonework, and lighting design. We deliver turnkey architectural transformations executed with uncompromising craftsmanship.",
+    short: "Bespoke residences & executive suites.",
+    desc: "Turnkey architectural transformations, Italian stonework, custom millwork, and refined ambient lighting design.",
     bullets: ["Full Turnkey Interior Execution", "Exclusive Material Procurement", "Custom Furniture & Millwork Design"],
   },
 ];
@@ -497,7 +497,7 @@ function Index() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {servicesList.map((srv) => {
             const Icon = srv.icon;
             return (
@@ -506,7 +506,7 @@ function Index() {
                 className="group relative flex flex-col justify-between border border-border bg-surface transition-all duration-500 hover:border-accent"
               >
                 {/* Architectural Thematic Image Banner */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-primary">
+                <div className="relative aspect-[16/8] w-full overflow-hidden bg-primary">
                   <img
                     src={srv.image}
                     alt={srv.title}
@@ -514,35 +514,35 @@ function Index() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
-                  <div className="absolute inset-x-6 top-6 flex items-center justify-between">
-                    <span className="border border-primary-foreground/20 bg-primary/75 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-primary-foreground backdrop-blur-md">
+                  <div className="absolute inset-x-5 top-5 flex items-center justify-between">
+                    <span className="border border-primary-foreground/20 bg-primary/75 px-2.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.2em] text-primary-foreground backdrop-blur-md">
                       {srv.tag}
                     </span>
-                    <span className="grid size-8 place-items-center bg-primary/85 font-mono text-xs font-semibold text-accent backdrop-blur-md">
+                    <span className="grid size-7 place-items-center bg-primary/85 font-mono text-xs font-semibold text-accent backdrop-blur-md">
                       {srv.number}
                     </span>
                   </div>
                 </div>
 
                 {/* Service Card Content */}
-                <div className="p-8 md:p-10">
+                <div className="p-6 md:p-7">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h3 className="font-display text-2xl font-bold leading-snug">{srv.title}</h3>
-                      <p className="mt-2 font-mono text-xs uppercase tracking-wider text-accent">{srv.short}</p>
+                      <h3 className="font-display text-xl font-bold leading-snug md:text-2xl">{srv.title}</h3>
+                      <p className="mt-1.5 font-mono text-[11px] uppercase tracking-wider text-accent">{srv.short}</p>
                     </div>
-                    <div className="grid size-12 shrink-0 place-items-center border border-border bg-background text-accent transition-colors group-hover:border-accent group-hover:bg-primary group-hover:text-primary-foreground">
-                      <Icon size={20} />
+                    <div className="grid size-10 shrink-0 place-items-center border border-border bg-background text-accent transition-colors group-hover:border-accent group-hover:bg-primary group-hover:text-primary-foreground">
+                      <Icon size={18} />
                     </div>
                   </div>
 
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{srv.desc}</p>
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground md:text-sm">{srv.desc}</p>
 
-                  <div className="mt-6 border-t border-border pt-6">
-                    <ul className="space-y-2 font-mono text-[11px] text-foreground/85">
+                  <div className="mt-5 border-t border-border pt-4">
+                    <ul className="space-y-1.5 font-mono text-[10.5px] text-foreground/85">
                       {srv.bullets.map((item) => (
                         <li key={item} className="flex items-center gap-2">
-                          <Check size={12} className="text-accent" />
+                          <Check size={11} className="text-accent" />
                           <span>{item}</span>
                         </li>
                       ))}
