@@ -45,21 +45,30 @@ import client3Img from "@/assets/client-3.jpg";
 import teamJohnSmithImg from "@/assets/team-john-smith.jpg";
 import teamGaneshJadhavImg from "@/assets/team-ganesh-jadhav.jpg";
 import teamMichaelBrownImg from "@/assets/team-michael-brown.jpg";
+import reCommercialTower from "@/assets/re-commercial-tower.jpg";
+import reTechCampus from "@/assets/re-tech-campus.jpg";
+import reLuxuryPenthouse from "@/assets/re-luxury-penthouse.jpg";
+import reRetailBoulevard from "@/assets/re-retail-boulevard.jpg";
+import reGatedEstate from "@/assets/re-gated-estate.jpg";
+import reCorporateHq from "@/assets/re-corporate-hq.jpg";
+import reLandPlot from "@/assets/re-land-plot.jpg";
+import reCommercialPlot from "@/assets/re-commercial-plot.jpg";
+import reVillaPlot from "@/assets/re-villa-plot.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "GJ SpaCes | Luxury Workspaces, Interiors & Asset Advisory Pune" },
+      { title: "GJ SpaCes | Luxury Workspaces, NA Plots & Prime Real Estate Advisory Pune" },
       {
         name: "description",
         content:
-          "Pune's premier boutique managed workspaces, turnkey luxury interior design studio, and real estate asset advisory led by Mr. Ganesh C Jadhav.",
+          "Pune's premier real estate agent, land bank acquisition specialist, NA plot consultant, and asset advisory led by Mr. Ganesh C Jadhav. 100% verified 7/12 clear titles.",
       },
-      { property: "og:title", content: "GJ SpaCes | Architecture for Living, Work & Investment" },
+      { property: "og:title", content: "GJ SpaCes | Real Estate Agent, NA Plots & Property Advisory" },
       {
         property: "og:description",
         content:
-          "Curated workspaces, rarefied residential interiors, and real estate asset management across Pune.",
+          "Curated NA land banks, commercial plots, pre-leased institutional assets, and luxury residential estates across Pune.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -69,92 +78,155 @@ export const Route = createFileRoute("/")({
 });
 
 const hubs = {
-  "Koregaon Park": { suites: 2, commute: "8 min from Pune Station", tone: "Flagship" },
-  Baner: { suites: 4, commute: "5 min from Balewadi High Street", tone: "Technology District" },
-  Kharadi: { suites: 3, commute: "4 min from EON IT Park", tone: "Enterprise Hub" },
-  Balewadi: { suites: 1, commute: "2 min from High Street", tone: "Creative Quarter" },
+  "All Pune Hubs": { inventory: "8+ Prime Deals", commute: "Prime Pune Growth Corridors", tone: "Full Land & Property Portfolio" },
+  "Baner & Balewadi": { inventory: "3 Commercial & Plots", commute: "5 min from Balewadi High St", tone: "Western IT & Commercial Hub" },
+  "Purandar / Saswad": { inventory: "12.5 Acre NA Parcel", commute: "New Airport Corridor", tone: "Mega Land Bank & Industrial BTS" },
+  "Koregaon Park": { inventory: "2 Signature Assets", commute: "8 min from Pune Station", tone: "Ultra-Luxury Estates & Land" },
+  Kharadi: { inventory: "45K Sq.Ft Office Floor", commute: "4 min from EON Free Zone", tone: "Eastern IT & SEZ District" },
+  "Talegaon / Lonavala": { inventory: "Gated Villa NA Plots", commute: "Mumbai-Pune Expressway", tone: "Scenic NA Farmhouse & Villa Plots" },
 } as const;
 
 type Hub = keyof typeof hubs;
 type Brief = "workspace" | "residence";
+
+const dealCategories = [
+  "All Deals",
+  "NA Land & Plots",
+  "Commercial Plots & HQ",
+  "Commercial & Pre-Leased",
+  "Luxury Residential",
+] as const;
+
+type DealCategory = (typeof dealCategories)[number];
 
 interface PortfolioItem {
   id: string;
   image: string;
   label: string;
   title: string;
-  location: string;
-  category: "Workspace" | "Interior" | "Culture";
+  location: Hub;
+  category: DealCategory;
+  area: string;
+  yieldOrPrice: string;
+  status: string;
   description: string;
   specs: string[];
 }
 
 const portfolioGallery: PortfolioItem[] = [
   {
-    id: "monolith",
-    image: suiteImage,
-    label: "Capacity 04—06",
-    title: "The Monolith Suite",
-    location: "Koregaon Park",
-    category: "Workspace",
+    id: "purandar-na-land",
+    image: reLandPlot,
+    label: "Collector NA · 12.5 Acres (500 Guntha)",
+    title: "Purandar Airport Corridor NA Land Bank",
+    location: "Purandar / Saswad",
+    category: "NA Land & Plots",
+    area: "12.5 Acres (5,44,500 Sq.Ft)",
+    yieldOrPrice: "₹1.65 Cr / Acre · Clear Title",
+    status: "100% Clear 7/12 Verified",
     description:
-      "A tailored private executive suite carved with fluted Italian stone, acoustic bronze panelling, and enterprise-grade dedicated connectivity.",
-    specs: ["Ergonomic Herman Miller seating", "Dedicated 1 Gbps fiber VLAN", "Private lounge enclave"],
+      "A strategic high-yield mega land parcel located directly in the Pune International Airport growth corridor. Collector sanctioned NA with 100ft road touch access, fully demarcated compound boundaries, and single-owner unencumbered 7/12 extract.",
+    specs: [
+      "Collector NA Sanctioned with Clear 7/12",
+      "100ft Main Highway Road Touch Frontage",
+      "30-Year Legal Title Search Report Available",
+      "Ideal for Logistics Hub, Township or Industrial BTS",
+    ],
   },
   {
-    id: "verdant",
-    image: loungeImage,
-    label: "Members' Salon",
-    title: "The Verdant Lounge",
-    location: "Baner",
-    category: "Culture",
+    id: "baner-commercial-plot",
+    image: reCommercialPlot,
+    label: "Commercial Plot · 32 Guntha (34,848 SQ.FT)",
+    title: "Baner Gateway Commercial Development Plot",
+    location: "Baner & Balewadi",
+    category: "Commercial Plots & HQ",
+    area: "32 Guntha (34,848 Sq.Ft)",
+    yieldOrPrice: "₹4,800 / Sq.Ft · High FSI",
+    status: "Direct Owner Exclusive",
     description:
-      "A biophilic sanctuary curated for rarefied networking, artisan coffee tastings, and focused decompression.",
-    specs: ["Living moss vertical garden", "Artisan espresso bar", "Natural skylight integration"],
+      "A rare prime road-touch commercial plot on the Baner-Balewadi arterial corridor. High FSI potential, ideal for constructing a Grade-A IT corporate tower, luxury boutique hotel, hospital, or commercial retail mall.",
+    specs: [
+      "High FSI & TOD Corridor Development Potential",
+      "Direct 80ft DP Road Frontage Access",
+      "Demarcated Boundaries with Water & Power Lines",
+      "Clean Freehold Title & Immediate Registry",
+    ],
   },
   {
-    id: "copper",
-    image: stairImage,
-    label: "Events + Culture",
-    title: "The Copper Atelier",
+    id: "talegaon-villa-plots",
+    image: reVillaPlot,
+    label: "Gated NA Plots · 1.0 to 3.5 Acres",
+    title: "Sahyadri Valley Luxury NA Villa Plots",
+    location: "Talegaon / Lonavala",
+    category: "NA Land & Plots",
+    area: "1.0 — 3.5 Acres Demarcated Plots",
+    yieldOrPrice: "₹85 Lakh / Acre · Sanctioned",
+    status: "Gated Layout Sanctioned",
+    description:
+      "Exclusive gated community of sanctioned NA farmhouse and luxury villa plots nestled against the Sahyadri hills. Features complete stone compound fencing, private internal bitumen roads, water lines, and 3-phase electricity.",
+    specs: [
+      "Collector Sanctioned NA with Individual 7/12",
+      "Gated Society with 24/7 Security & Fencing",
+      "Underground Water & 3-Phase Power Connections",
+      "Scenic 360° Hilltop Views & Clean Air Zone",
+    ],
+  },
+  {
+    id: "commercial-tower",
+    image: reCommercialTower,
+    label: "Grade-A Office · 45,000 SQ.FT",
+    title: "Zenith IT Corporate Tower",
     location: "Kharadi",
-    category: "Workspace",
+    category: "Commercial & Pre-Leased",
+    area: "45,000 Sq. Ft. Floor Plates",
+    yieldOrPrice: "9.2% Target Rental Yield",
+    status: "Grade-A Core & Shell",
     description:
-      "A dramatic architectural nexus featuring hand-brushed copper cladding and sculptural circulation for team summits.",
-    specs: ["Hand-brushed copper finish", "Dolby Atmos acoustics", "Amphitheater stepped seating"],
+      "Institutional-grade commercial IT floor plates located adjacent to EON Free Zone. Features high floor-to-ceiling clearance, LEED Platinum certified infrastructure, multi-level MLCP parking, and dual redundant power substations.",
+    specs: [
+      "LEED Platinum Certified Architecture",
+      "45,000 sq.ft Contiguous Floor Plate",
+      "100% DG Power Redundancy + Dual Substation",
+      "High-Speed Destination Elevators",
+    ],
   },
   {
-    id: "atelier",
-    image: atelierImage,
-    label: "Design Studio",
-    title: "The Material Atelier",
+    id: "boat-club-estate",
+    image: reGatedEstate,
+    label: "Prime Parcel · 1.8 Acres (72 Guntha)",
+    title: "Boat Club Signature Redevelopment Land",
     location: "Koregaon Park",
-    category: "Interior",
+    category: "Luxury Residential",
+    area: "1.8 Acre Prime Freehold Land",
+    yieldOrPrice: "Joint Venture / Outright Acquisition",
+    status: "Exclusive Agent Mandate",
     description:
-      "Our core interior research laboratory showcasing curated travertine, reclaimed teak, and bespoke metal samples for bespoke residences.",
-    specs: ["Material tactile gallery", "Full scale lighting simulator", "Bespoke joinery workshop"],
+      "An unprecedented luxury land parcel in Pune's most prestigious pin code. Approved for ultra-luxury residential redevelopment or private family estate with clear statutory approvals and unencumbered ownership title.",
+    specs: [
+      "1.8 Acre Prime Freehold Land with Clear Title",
+      "High FSI & TDR Residential Development Potential",
+      "Pune's Most Prestigious Low-Density Pin Code",
+      "Ideal for Ultra-Luxury Sky Mansions or Private Estate",
+    ],
   },
   {
-    id: "hero",
-    image: serviceWorkspacesImg,
-    label: "Executive Reception",
-    title: "The Grand Rotunda",
-    location: "Balewadi",
-    category: "Workspace",
+    id: "tech-campus",
+    image: reTechCampus,
+    label: "Pre-Leased MNC Campus · 120,000 SQ.FT",
+    title: "Elysium Enterprise Tech Park",
+    location: "Baner & Balewadi",
+    category: "Commercial & Pre-Leased",
+    area: "120,000 Sq. Ft. Tech Campus",
+    yieldOrPrice: "9.4% Immediate Gross ROI",
+    status: "Pre-Leased to Fortune 500",
     description:
-      "An imposing welcome statement clad in monolithic stone and warm architectural illumination designed to elevate corporate presence.",
-    specs: ["24/7 Biometric access gate", "Concierge hospitality desk", "Fluted quartzite wall"],
-  },
-  {
-    id: "penthouse",
-    image: suiteImage,
-    label: "Private Residence",
-    title: "The Koregaon Penthouse",
-    location: "Koregaon Park",
-    category: "Interior",
-    description:
-      "A private luxury residential interior balancing minimalist Japanese aesthetics with rich Indian craft traditions.",
-    specs: ["Custom Italian marble kitchen", "Smart home automated scenes", "Private terrace garden"],
+      "Blue-chip institutional pre-leased asset with a global Fortune 500 tech tenant on a 9-year lease lock-in. Steady 15% rental escalation every 3 years with complete property asset stewardship provided by GJ SpaCes.",
+    specs: [
+      "9-Year Institutional Lease Lock-in",
+      "Fortune 500 MNC Tenant Occupancy",
+      "9.4% Immediate Gross Rental Yield",
+      "Full Asset Stewardship by GJ SpaCes",
+    ],
   },
 ];
 
@@ -263,7 +335,10 @@ const heroVideos = [
 ];
 
 function Index() {
-  const [hub, setHub] = useState<Hub>("Koregaon Park");
+  const [hub, setHub] = useState<Hub>("All Pune Hubs");
+  const [agentDealType, setAgentDealType] = useState<string>("Buy Collector NA Land / Plot");
+  const [agentBudget, setAgentBudget] = useState<string>("₹2 Cr – ₹10 Cr");
+  const [agentLoc, setAgentLoc] = useState<string>("Baner & Balewadi (Tech Corridor)");
   const [brief, setBrief] = useState<Brief>("workspace");
   const [team, setTeam] = useState(8);
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -278,12 +353,11 @@ function Index() {
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
-  const [contactSubject, setContactSubject] = useState("Workspace Inquiry");
+  const [contactSubject, setContactSubject] = useState("Real Estate & Plot Inquiry");
   const [contactMessage, setContactMessage] = useState("");
   const [contactSubmitted, setContactSubmitted] = useState(false);
 
   const filmRef = useRef<HTMLVideoElement>(null);
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -596,35 +670,121 @@ function Index() {
         </figure>
       </section>
 
-      {/* Spatial Explorer & Expanded Portfolio Gallery */}
-      <section id="spaces" className="bg-primary py-16 text-primary-foreground md:py-20">
+      {/* Real Estate & NA Plot Agent Deal Desk Section */}
+      <section id="spaces" className="bg-primary py-16 text-primary-foreground md:py-24">
         <div className="px-6 md:px-12">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow text-accent">Spatial explorer · Pune</p>
-              <div className="mt-5 flex flex-wrap gap-x-7 gap-y-3">
-                {(Object.keys(hubs) as Hub[]).map((name) => (
-                  <button
-                    key={name}
-                    onClick={() => setHub(name)}
-                    className={`font-display text-3xl font-bold transition-opacity md:text-6xl ${
-                      hub === name ? "border-b-2 border-accent opacity-100" : "opacity-25 hover:opacity-70"
-                    }`}
-                  >
-                    {name}
-                  </button>
-                ))}
+          {/* Interactive Agent Deal Desk Quick Matcher Tool (The Attached Part) */}
+          <div className="rounded-xl border border-accent/30 bg-gradient-to-r from-primary-foreground/5 via-accent/10 to-primary-foreground/5 p-6 backdrop-blur-md md:p-8">
+            <div className="flex flex-col justify-between gap-4 border-b border-primary-foreground/15 pb-5 md:flex-row md:items-center">
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded bg-accent/25 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-accent">
+                  ⚡ AGENT DEAL DESK · DIRECT WITH GANESH JADHAV
+                </span>
+                <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-primary-foreground sm:text-3xl md:text-4xl">
+                  Looking for a Specific Plot, Land Bank or Commercial Space?
+                </h2>
+                <p className="mt-1 text-xs text-primary-foreground/75 md:text-sm">
+                  We maintain off-market NA land parcels and joint-venture opportunities with complete 30-year legal search reports across Pune.
+                </p>
               </div>
+              <a
+                href="tel:+919921003458"
+                className="inline-flex items-center gap-2 self-start rounded border border-primary-foreground/30 bg-primary/60 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary-foreground transition hover:border-accent hover:text-accent md:self-auto"
+              >
+                <Phone size={14} /> +91 9921003458
+              </a>
             </div>
-            <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-primary-foreground/60">
-              <span>{hubs[hub].tone}</span> · <span>{hubs[hub].commute}</span> ·{" "}
-              <span className="text-accent">{hubs[hub].suites} suites currently available</span>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Select 1: Requirement */}
+              <div>
+                <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-wider text-primary-foreground/70">
+                  DEAL REQUIREMENT
+                </label>
+                <select
+                  value={agentDealType}
+                  onChange={(e) => setAgentDealType(e.target.value)}
+                  className="w-full rounded border border-primary-foreground/20 bg-primary px-3 py-2.5 font-mono text-xs text-primary-foreground focus:border-accent focus:outline-none"
+                >
+                  <option value="Buy Collector NA Land / Plot">Buy Collector NA Land / Plot</option>
+                  <option value="Buy Commercial Development Plot">Buy Commercial Development Plot</option>
+                  <option value="Invest in Pre-Leased Commercial (9%+ ROI)">Invest in Pre-Leased (9%+ Yield)</option>
+                  <option value="Buy Ultra-Luxury Sky Villa / Estate">Buy Luxury Residence / Sky Villa</option>
+                  <option value="Sell or Joint Venture My Land Parcel">Sell / Joint Venture My Land</option>
+                </select>
+              </div>
+
+              {/* Select 2: Location */}
+              <div>
+                <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-wider text-primary-foreground/70">
+                  PUNE CORRIDOR
+                </label>
+                <select
+                  value={agentLoc}
+                  onChange={(e) => setAgentLoc(e.target.value)}
+                  className="w-full rounded border border-primary-foreground/20 bg-primary px-3 py-2.5 font-mono text-xs text-primary-foreground focus:border-accent focus:outline-none"
+                >
+                  <option value="Baner & Balewadi (Tech Corridor)">Baner & Balewadi (Tech Corridor)</option>
+                  <option value="Purandar / Saswad (Airport Belt)">Purandar / Saswad (Airport Belt)</option>
+                  <option value="Koregaon Park & Kalyani Nagar">Koregaon Park & Kalyani Nagar</option>
+                  <option value="Kharadi & Wagholi (EON SEZ)">Kharadi & Wagholi (IT Corridor)</option>
+                  <option value="Talegaon & Lonavala Expressway">Talegaon & Lonavala (Villa Plots)</option>
+                  <option value="Hinjewadi & Mahalunge">Hinjewadi & Mahalunge</option>
+                </select>
+              </div>
+
+              {/* Select 3: Budget */}
+              <div>
+                <label className="mb-1.5 block font-mono text-[10px] uppercase tracking-wider text-primary-foreground/70">
+                  TARGET BUDGET / SCALE
+                </label>
+                <select
+                  value={agentBudget}
+                  onChange={(e) => setAgentBudget(e.target.value)}
+                  className="w-full rounded border border-primary-foreground/20 bg-primary px-3 py-2.5 font-mono text-xs text-primary-foreground focus:border-accent focus:outline-none"
+                >
+                  <option value="Under ₹2 Cr">Under ₹2 Cr</option>
+                  <option value="₹2 Cr – ₹10 Cr">₹2 Cr – ₹10 Cr</option>
+                  <option value="₹10 Cr – ₹50 Cr">₹10 Cr – ₹50 Cr</option>
+                  <option value="₹50 Cr+ (Institutional)">₹50 Cr+ (Institutional Deal)</option>
+                </select>
+              </div>
+
+              {/* Instant WhatsApp Action */}
+              <div className="flex items-end">
+                <a
+                  href={`https://wa.me/919921003458?text=${encodeURIComponent(
+                    `Hello Mr. Ganesh Jadhav, I am looking for [${agentDealType}] in [${agentLoc}] with a budget of [${agentBudget}]. Please share available verified 7/12 plots and off-market property options.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-[42px] w-full items-center justify-center gap-2 rounded bg-[#25D366] px-4 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-lg transition hover:bg-[#20ba5a] hover:scale-[1.02]"
+                >
+                  <MessageSquare size={16} /> INSTANT WHATSAPP INQUIRY
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 6-Item Architectural Showcase with Lightbox Trigger */}
-        <div id="portfolio" className="mt-16 grid gap-px bg-primary-foreground/10 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Gallery Introduction & Client Guidance */}
+        <div className="mt-16 flex flex-col justify-between gap-4 border-t border-primary-foreground/15 pt-12 md:flex-row md:items-end">
+          <div>
+            <p className="eyebrow text-accent">Exclusive Property Portfolio · Pune</p>
+            <h3 className="mt-2 font-display text-3xl font-bold tracking-tight text-primary-foreground md:text-5xl">
+              Featured Land Parcels, Commercial & Luxury Assets
+            </h3>
+            <p className="mt-2 max-w-2xl text-xs leading-relaxed text-primary-foreground/75 md:text-sm">
+              Click any listing to inspect 100% verified 7/12 legal title status, exact square footage / guntha demarcation, zoning sanctions, and request the complete property deck on WhatsApp.
+            </p>
+          </div>
+          <div className="shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/70">
+            <span className="text-accent">06 Active Verified Listings</span> · <span>100% Clear Title Guarantee</span>
+          </div>
+        </div>
+
+        {/* 6 Real Estate & Plot Property Cards (3x2 Grid) */}
+        <div id="portfolio" className="mt-10 grid gap-px bg-primary-foreground/10 sm:grid-cols-2 lg:grid-cols-3">
           {portfolioGallery.map((item) => (
             <article
               key={item.id}
@@ -636,24 +796,37 @@ function Index() {
                 width={800}
                 height={1200}
                 loading="lazy"
-                alt={`${item.title} at GJ SpaCes Pune`}
-                className="size-full object-cover opacity-65 transition duration-1000 group-hover:scale-105 group-hover:opacity-95"
+                alt={`${item.title} - ${item.category} in ${item.location}, Pune`}
+                className="size-full object-cover opacity-80 transition duration-1000 group-hover:scale-105 group-hover:opacity-95"
               />
-              <div className="absolute inset-0 bg-card-shade" />
-              <div className="absolute inset-x-7 top-7 flex items-center justify-between">
-                <span className="border border-primary-foreground/20 bg-primary/60 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.2em] text-primary-foreground/80 backdrop-blur-sm">
-                  {item.location}
-                </span>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-accent opacity-0 transition group-hover:opacity-100">
-                  Expand View ↗
+              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/45 to-transparent" />
+              
+              {/* Top Meta Badges */}
+              <div className="absolute inset-x-6 top-6 flex flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="border border-primary-foreground/20 bg-primary/80 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.2em] text-primary-foreground/90 backdrop-blur-sm">
+                    {item.location}
+                  </span>
+                  <span className="border border-accent/40 bg-accent/20 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.15em] text-accent backdrop-blur-sm">
+                    {item.category}
+                  </span>
+                </div>
+                <span className="rounded bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-emerald-400 backdrop-blur-sm">
+                  {item.status}
                 </span>
               </div>
-              <div className="absolute inset-x-7 bottom-8 flex items-end justify-between">
+
+              {/* Bottom Property Information */}
+              <div className="absolute inset-x-6 bottom-7 flex items-end justify-between gap-4">
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-accent">{item.label}</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-primary-foreground">{item.title}</h3>
+                  <h3 className="mt-1.5 font-display text-2xl font-bold text-primary-foreground">{item.title}</h3>
+                  <div className="mt-2.5 flex flex-wrap items-center gap-2 font-mono text-[10px] text-primary-foreground/85">
+                    <span className="rounded bg-primary-foreground/15 px-2.5 py-1 font-semibold">{item.area}</span>
+                    <span className="rounded bg-accent/25 px-2.5 py-1 font-bold text-accent">{item.yieldOrPrice}</span>
+                  </div>
                 </div>
-                <div className="grid size-10 place-items-center border border-primary-foreground/20 bg-primary/40 text-primary-foreground backdrop-blur-sm transition duration-300 group-hover:border-accent group-hover:text-accent">
+                <div className="grid size-10 shrink-0 place-items-center border border-primary-foreground/20 bg-primary/70 text-primary-foreground backdrop-blur-sm transition duration-300 group-hover:border-accent group-hover:text-accent group-hover:scale-110">
                   <ArrowDownRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
                 </div>
               </div>
@@ -1174,58 +1347,114 @@ function Index() {
         </div>
       </footer>
 
-      {/* Lightbox Modal for Portfolio Showcase */}
+      {/* Lightbox Modal for Real Estate Property Showcase */}
       {activeLightbox && (
         <div
-          className="fixed inset-0 z-[80] grid place-items-center bg-overlay/90 p-4 backdrop-blur-md"
+          className="fixed inset-0 z-[80] flex items-center justify-center overflow-y-auto bg-overlay/90 p-3 sm:p-6 backdrop-blur-md"
           role="dialog"
           aria-modal="true"
           aria-label={activeLightbox.title}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setActiveLightbox(null);
+          }}
         >
-          <div className="relative w-full max-w-4xl border border-border bg-background shadow-atelier">
-            <div className="relative aspect-[16/9] w-full overflow-hidden bg-primary sm:aspect-[21/9]">
+          <div className="relative my-auto flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl border border-border bg-background shadow-2xl">
+            {/* Header Image with Badges & Close Button */}
+            <div className="relative h-40 shrink-0 overflow-hidden bg-primary sm:h-52 md:h-60">
               <img
                 src={activeLightbox.image}
                 alt={activeLightbox.title}
                 className="size-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              
               <Button
                 variant="glass"
                 size="icon"
-                className="absolute right-4 top-4 text-primary-foreground"
+                className="absolute right-3 top-3 z-10 size-9 rounded-full text-primary-foreground shadow-md backdrop-blur-md hover:bg-background/80 hover:text-foreground"
                 onClick={() => setActiveLightbox(null)}
                 aria-label="Close image preview"
               >
-                <X size={18} />
+                <X size={16} />
               </Button>
-            </div>
-            <div className="p-6 md:p-10">
-              <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-accent">
-                    {activeLightbox.category} · {activeLightbox.location}
-                  </span>
-                  <h3 className="mt-1 font-display text-3xl font-extrabold">{activeLightbox.title}</h3>
-                </div>
-                <Button
-                  onClick={() => {
-                    setActiveLightbox(null);
-                    openBooking();
-                  }}
-                >
-                  Reserve This Space <ArrowRight size={14} />
-                </Button>
+
+              <div className="absolute bottom-3 left-4 flex flex-wrap items-center gap-1.5 sm:left-6 sm:gap-2">
+                <span className="border border-accent/40 bg-accent/20 px-2.5 py-0.5 font-mono text-[8px] uppercase tracking-widest text-accent backdrop-blur-sm sm:text-[9px]">
+                  {activeLightbox.category}
+                </span>
+                <span className="border border-primary-foreground/20 bg-primary/80 px-2.5 py-0.5 font-mono text-[8px] uppercase tracking-widest text-primary-foreground backdrop-blur-sm sm:text-[9px]">
+                  {activeLightbox.location}
+                </span>
+                <span className="rounded border border-emerald-500/40 bg-emerald-950/80 px-2.5 py-0.5 font-mono text-[8px] uppercase tracking-wider text-emerald-400 backdrop-blur-sm sm:text-[9px]">
+                  {activeLightbox.status}
+                </span>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+            </div>
+
+            {/* Scrollable Content Body */}
+            <div className="overflow-y-auto p-4 sm:p-6 md:p-8">
+              {/* Title & Action Buttons Row */}
+              <div className="flex flex-col justify-between gap-4 border-b border-border pb-4 sm:flex-row sm:items-center">
+                <div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent sm:text-xs">
+                    {activeLightbox.label}
+                  </span>
+                  <h3 className="mt-1 font-display text-xl font-extrabold tracking-tight sm:text-2xl md:text-3xl text-foreground">
+                    {activeLightbox.title}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                  <a
+                    href={`https://wa.me/919921003458?text=${encodeURIComponent(
+                      `Hello Mr. Ganesh Jadhav, I am inquiring about the real estate property "${activeLightbox.title}" in ${activeLightbox.location} (${activeLightbox.area}, ${activeLightbox.yieldOrPrice}). Please share the 7/12 extract and complete property deck.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded bg-[#25D366] px-3.5 py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow transition hover:bg-[#20ba5a]"
+                  >
+                    <MessageSquare size={14} /> Request 7/12 & Deck
+                  </a>
+                  <Button
+                    size="sm"
+                    className="h-[34px] px-3.5 text-[11px] font-mono uppercase tracking-wider"
+                    onClick={() => {
+                      setActiveLightbox(null);
+                      openBooking();
+                    }}
+                  >
+                    Book Site Visit <ArrowRight size={13} className="ml-1" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Real Estate Financial & Physical Parameters Bar */}
+              <div className="mt-4 grid grid-cols-3 gap-2 border-b border-border pb-4 font-mono text-xs">
+                <div className="rounded bg-surface p-2.5">
+                  <span className="text-muted-foreground uppercase tracking-wider text-[9px] block">Total Space</span>
+                  <strong className="text-foreground text-xs sm:text-sm font-semibold">{activeLightbox.area}</strong>
+                </div>
+                <div className="rounded bg-surface p-2.5">
+                  <span className="text-muted-foreground uppercase tracking-wider text-[9px] block">Financials / Yield</span>
+                  <strong className="text-accent text-xs sm:text-sm font-semibold">{activeLightbox.yieldOrPrice}</strong>
+                </div>
+                <div className="rounded bg-surface p-2.5">
+                  <span className="text-muted-foreground uppercase tracking-wider text-[9px] block">Availability</span>
+                  <strong className="text-foreground text-xs sm:text-sm font-semibold">{activeLightbox.status}</strong>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="mt-4 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                 {activeLightbox.description}
               </p>
-              <div className="mt-6 border-t border-border pt-6">
-                <span className="meta block">Key Architectural Specifications</span>
-                <div className="mt-3 grid gap-2 sm:grid-cols-3 font-mono text-xs text-foreground/90">
+
+              {/* Specifications List */}
+              <div className="mt-5 border-t border-border pt-4">
+                <span className="meta block text-foreground font-semibold">Key Property & Statutory Specifications</span>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2 font-mono text-[11px] text-foreground/90">
                   {activeLightbox.specs.map((spec) => (
-                    <div key={spec} className="flex items-center gap-2 border border-border bg-surface p-3">
-                      <Check size={12} className="text-accent" />
+                    <div key={spec} className="flex items-center gap-2 rounded border border-border bg-surface p-2.5">
+                      <Check size={12} className="text-accent shrink-0" />
                       <span>{spec}</span>
                     </div>
                   ))}
@@ -1294,12 +1523,15 @@ function Index() {
       {/* Tour Booking Modal (Preserved & Enhanced) */}
       {bookingOpen && (
         <div
-          className="fixed inset-0 z-[70] grid place-items-center bg-overlay p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto bg-overlay p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label="Book a GJ SpaCes visit"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setBookingOpen(false);
+          }}
         >
-          <div className="w-full max-w-xl border border-border bg-background p-6 shadow-atelier md:p-10">
+          <div className="relative my-auto w-full max-w-xl max-h-[92vh] overflow-y-auto border border-border bg-background p-6 shadow-atelier md:p-10 rounded-xl">
             <div className="flex items-start justify-between">
               <div>
                 <p className="eyebrow">Private appointment · 0{bookingStep}</p>
